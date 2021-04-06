@@ -2,94 +2,88 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+	<meta charset="utf-8">
+	<title>Welcome to CodeIgniter</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-  
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <style type="text/css">
-    	
-    	.dropzone,.dropzone *{box-sizing:border-box}.dropzone{position:relative}.dropzone .dz-preview{position:relative;display:inline-block;width:120px;margin:0.5em}.dropzone .dz-preview .dz-progress{display:block;height:15px;border:1px solid #aaa}.dropzone .dz-preview .dz-progress .dz-upload{display:block;height:100%;width:0;background:green}.dropzone .dz-preview .dz-error-message{color:red;display:none}.dropzone .dz-preview.dz-error .dz-error-message,.dropzone .dz-preview.dz-error .dz-error-mark{display:block}.dropzone .dz-preview.dz-success .dz-success-mark{display:block}.dropzone .dz-preview .dz-error-mark,.dropzone .dz-preview .dz-success-mark{position:absolute;display:none;left:30px;top:30px;width:54px;height:58px;left:50%;margin-left:-27px}
+	<style type="text/css">
 
-    </style>
+	::selection { background-color: #E13300; color: white; }
+	::-moz-selection { background-color: #E13300; color: white; }
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-  	<div class="container">
-  <h1>&nbsp;</h1>
-		<div class="jumbotron">
-		<h1 class="display-4">Hello, Document Code!</h1>
-		<p class="lead">This is a simple hero unit, a simple multiple upload codeigniter jquery ajax.</p>
-		
-		<div class="dropzone" style="margin-top: 100px;
-	border: 1px dashed #0087F7;">
+	body {
+		background-color: #fff;
+		margin: 40px;
+		font: 13px/20px normal Helvetica, Arial, sans-serif;
+		color: #4F5155;
+	}
 
-		  <div class="dz-message" style="text-align: center;" >
-		  <a class="btn btn-primary btn-sm"  href="#" role="button"><i class="fa fa-upload" aria-hidden="true"></i>
-<i class="fa fa-download" aria-hidden="true"></i>
-</a>
-		  
-		  </div>
+	a {
+		color: #003399;
+		background-color: transparent;
+		font-weight: normal;
+	}
 
-		</div>
-		
-		</div>
+	h1 {
+		color: #444;
+		background-color: transparent;
+		border-bottom: 1px solid #D0D0D0;
+		font-size: 19px;
+		font-weight: normal;
+		margin: 0 0 14px 0;
+		padding: 14px 15px 10px 15px;
+	}
+
+	code {
+		font-family: Consolas, Monaco, Courier New, Courier, monospace;
+		font-size: 12px;
+		background-color: #f9f9f9;
+		border: 1px solid #D0D0D0;
+		color: #002166;
+		display: block;
+		margin: 14px 0 14px 0;
+		padding: 12px 10px 12px 10px;
+	}
+
+	#body {
+		margin: 0 15px 0 15px;
+	}
+
+	p.footer {
+		text-align: right;
+		font-size: 11px;
+		border-top: 1px solid #D0D0D0;
+		line-height: 32px;
+		padding: 0 10px 0 10px;
+		margin: 20px 0 0 0;
+	}
+
+	#container {
+		margin: 10px;
+		border: 1px solid #D0D0D0;
+		box-shadow: 0 0 8px #D0D0D0;
+	}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<h1>Welcome to CodeIgniter!</h1>
+
+	<div id="body">
+		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+
+		<p>If you would like to edit this page you'll find it located at:</p>
+		<code>application/views/welcome_message.php</code>
+
+		<p>The corresponding controller for this page is found at:</p>
+		<code>application/controllers/Welcome.php</code>
+
+		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js"></script>
-    <script type="text/javascript">
+	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+</div>
 
-Dropzone.autoDiscover = false;
-
-var foto_upload= new Dropzone(".dropzone",{
-url: "<?php echo base_url('welcome/process_upload') ?>",
-maxFilesize: 2,
-method:"post",
-acceptedFiles:"image/*",
-paramName:"userfile",
-dictInvalidFileType:"Type file not allowed",
-addRemoveLinks:true,
-});
-
-
-//Event ketika Memulai mengupload
-foto_upload.on("sending",function(a,b,c){
-	a.token=Math.random();
-	c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
-});
-
-
-//Event ketika foto dihapus
-foto_upload.on("removedfile",function(a){
-	var token=a.token;
-	$.ajax({
-		type:"post",
-		data:{token:token},
-		url:"<?php echo base_url('welcome/remove_foto') ?>",
-		cache:false,
-		dataType: 'json',
-		success: function(){
-			console.log("remove poto success");
-		},
-		error: function(){
-			console.log("Error");
-
-		}
-	});
-});
-
-
-</script>
-  </body>
+</body>
 </html>
