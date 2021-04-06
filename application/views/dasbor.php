@@ -47,10 +47,7 @@
                     <td class="small">
                       <?php echo substr($person->tentang, 0, 120) ?>...</td>
                     <td width="250">
-                      <a href="<?php echo site_url('admin/personal/edit/'.$person->nomor_id) ?>"
-                       class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                      <a onclick="deleteConfirm('<?php echo site_url('admin/personal/delete/'.$person->nomor_id) ?>')"
-                       href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                     <a href="#">x</a>
                     </td>
                   </tr>
                   <?php endforeach; ?>

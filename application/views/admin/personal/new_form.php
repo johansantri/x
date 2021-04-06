@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label for="name">Name*</label>
                 <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-                 type="text" name="nama" placeholder="Product name" />
+                 type="text" name="nama" placeholder="Personal name" />
                 <div class="invalid-feedback">
                   <?php echo form_error('nama') ?>
                 </div>
@@ -39,7 +39,7 @@
               <div class="form-group">
                 <label for="no_hp">phone*</label>
                 <input class="form-control <?php echo form_error('no_hp') ? 'is-invalid':'' ?>"
-                 type="number" name="no_hp" min="0" placeholder="Product no_hp" />
+                 type="number" name="no_hp" min="0" placeholder="phone" />
                 <div class="invalid-feedback">
                   <?php echo form_error('no_hp') ?>
                 </div>
