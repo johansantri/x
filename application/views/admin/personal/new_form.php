@@ -27,42 +27,114 @@
           <div class="card-body">
 
             <form action="<?php base_url('admin/personal/add') ?>" method="post" enctype="multipart/form-data" >
+              <div class="row">
+                <div class="col-md-6">
               <div class="form-group">
                 <label for="name">Name*</label>
-                <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-                 type="text" name="nama" placeholder="Personal name" />
+                <input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+                 type="text" name="name" placeholder="Personal name" />
                 <div class="invalid-feedback">
-                  <?php echo form_error('nama') ?>
+                  <?php echo form_error('name') ?>
                 </div>
               </div>
+              </div>
 
+              <div class="col-md-2">
               <div class="form-group">
-                <label for="no_hp">phone*</label>
+                <label for="no_hp">Phone*</label>
                 <input class="form-control <?php echo form_error('no_hp') ? 'is-invalid':'' ?>"
                  type="number" name="no_hp" min="0" placeholder="phone" />
                 <div class="invalid-feedback">
                   <?php echo form_error('no_hp') ?>
                 </div>
               </div>
+            </div>
 
-
-              <div class="form-group">
-                <label for="name">Photo</label>
-                <input class="form-control-file <?php echo form_error('poto') ? 'is-invalid':'' ?>"
-                 type="file" name="poto" />
+            <div class="col-md-2"> 
+               <div class="form-group">
+                <label for="email">Email*</label>
+                <input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>"
+                 type="email" name="email" min="0" placeholder="email" />
                 <div class="invalid-feedback">
-                  <?php echo form_error('poto') ?>
+                  <?php echo form_error('email') ?>
+                </div>
+              </div>
+              </div>
+
+              <div class="col-md-2">
+              <div class="form-group">
+                <label for="jk">Gender*</label>
+                <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="jk" id="jk">
+                  <option ></option>
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+                
+                <div class="invalid-feedback">
+                  <?php echo form_error('jk') ?>
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+          
+           
+
+              
+
+              <div class="row">
+                <div class="col-md-6">
+              <div class="form-group">
+                <label for="jabatan">Position*</label>
+                <input class="form-control <?php echo form_error('jabatan') ? 'is-invalid':'' ?>"
+                 type="text" name="jabatan" min="0" placeholder="position" />
+                <div class="invalid-feedback">
+                  <?php echo form_error('jabatan') ?>
+                </div>
+              </div>
+              </div>
+
+              <div class="col-md-6"> 
+              <div class="form-group">
+                <label for="institusi">Company*</label>
+                <input class="form-control <?php echo form_error('institusi') ? 'is-invalid':'' ?>"
+                 type="text" name="institusi" min="0" placeholder="company" />
+                <div class="invalid-feedback">
+                  <?php echo form_error('institusi') ?>
+                </div>
+              </div>
+            </div>
+            </div>
+
+                 <div class="form-group">
+                <label for="alamat">Address*</label>
+                <input class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>"
+                 type="text" name="alamat" min="0" placeholder="address" />
+                <div class="invalid-feedback">
+                  <?php echo form_error('alamat') ?>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="name">Description*</label>
+                 <div class="form-group">
+                <label for="tentang">Profile*</label>
                 <textarea class="form-control <?php echo form_error('tentang') ? 'is-invalid':'' ?>"
-                 name="tentang" placeholder="Product tentang..."></textarea>
+                 name="tentang" placeholder="Description..."></textarea>
                 <div class="invalid-feedback">
                   <?php echo form_error('tentang') ?>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="image">Photo<small> max : 5 Mb</small></label>
+                <input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
+                 type="file" name="image" />
+                <div class="invalid-feedback">
+                  <?php echo form_error('image') ?>
+                </div>
+              </div>
+
+           
 
               <input class="btn btn-success" type="submit" name="btn" value="Save" />
             </form>

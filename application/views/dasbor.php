@@ -36,13 +36,13 @@
                   <?php foreach ($Personal as $person): ?>
                   <tr>
                     <td width="150">
-                      <?php echo $person->nama ?>
+                      <?php echo $person->name ?>
                     </td>
                     <td>
                       <?php echo $person->no_hp ?>
                     </td>
                     <td>
-                      <img src="<?php echo base_url('upload/personal/'.$person->poto) ?>" width="64" />
+                      <img src="<?php echo base_url('upload/personal/'.$person->image) ?>" width="64" />
                     </td>
                     <td class="small">
                       <?php echo substr($person->tentang, 0, 120) ?>...</td>
