@@ -1,4 +1,6 @@
-<!doctype html>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -46,8 +48,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="key" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" id="cari" type="submit">Search</button>
     </form>
   </div>
 </nav>
@@ -85,8 +87,17 @@
       </div>
   <div class="col-md-8">
       <div class="card-body">
-      <h6 class="card-title"><a href=""><?php echo $person->name ?></a></h6>
-      <p class="card-text"><small><?php echo substr($person->tentang, 0, 80) ?>..</small></p>
+      <h6 class="card-title"><a href=""><i class="fa fa-user" aria-hidden="true"></i>
+ <?php echo $person->name ?></a></h6>
+
+      <p style="margin: 0.2px 0;"><small class="card-text"><i class="fa fa-envelope" aria-hidden="true"> <?php echo $person->email ?></i>
+  </small></p> 
+
+  <p style="margin: 0.2px 0;"><small class="card-text"><i class="fa fa-phone" aria-hidden="true"> <?php echo $person->no_hp ?></i>
+ </small></p> 
+
+  <p style="margin: 0.2px 0;"><small class="card-text"><i class="fa fa-map-marker" aria-hidden="true"> <?php echo $person->alamat ?></i>
+  </small></p> 
     </div>
     </div>
  
@@ -94,7 +105,7 @@
   
   </div>
      <div class="card-footer" style="text-align: center;">
-      <small class="text-muted" ><?php echo $person->no_hp ?> || <?php echo $person->email ?> || <?php echo $person->alamat ?></small>
+     <small><?php echo substr($person->tentang, 0, 80) ?>..</small>
     </div>
 
  </div>
@@ -140,6 +151,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></script>
     <script type="text/javascript">
      $(document).ready( function () {
     $('#dataTable').DataTable();
@@ -149,6 +161,71 @@
     $('#deleteModal').modal();
   }
  
+
+$('#cari').click(function () {
+$('#messages1 tbody').empty();
+
+  var searchField = $('#key').val();
+  if (searchField == " ") {
+
+    $("input").attr("placeholder", "nama").val("").focus().blur();
+
+    $("#cari").attr("disabled", true);
+    $('#messages1').append("<tr><td style='text-align:center' colspan='8'> <b >-----------------------</b></td></tr>");
+    setTimeout(function () {
+
+      $("#cari").attr("disabled", false);
+      $('#messages1 tbody').empty();
+      /*$('#messages1 thead').empty();*/
+      /* $("input").prop('disabled', false);*/
+      $("input").focus();
+    }, 1000);
+
+
+  } else {
+
+    $.ajax({
+      type: "POST",
+      url: '/dasbor/cariKey',
+      data: { "key": searchField },
+      dataType: "json",
+      cache : false,
+      success: function (data) {
+         $('#messages1').append(
+            "<tr><th scope='row'>nip</th><td>nama</td><td>matakuliah</td><td>sks</td><td>kelas</td><td>jam</td><td>hari</td>aksi<td></tr></td>"
+
+          );
+        /*  $('#asu').append("");*/
+        $.each(data, function (key, value) {
+          /*$("input").prop('disabled', true);*/
+          //show complate seaerch
+
+          $('#messages1').append(
+            "<tr><th scope='row'>" + value.nip + "</th><td>" + value.nama_dosen + "</td><td>" + value.nama_mk + "</td><td>" + value.sks + "</td><td>" + value.nama_kelas + "</td><td>" + value.jam_ke + "</td><td>" + value.nama_hari + "</td><td><a type='button' class='btn btn-success btn-sm tooltip-test' title='More' onclick='addMatri(" + value.id_jadwal + ")'data-toggle='modal' data-target='#exampleModalLong'><i class='fas fa-edit'></i></a><a type='button' class='btn btn-danger btn-sm tooltip-test' title='clear all' onclick='hapus()'' > <span class='fa fa-window-close'></span></a></tr></td>"
+
+          );
+
+        });
+        $("input").focus();
+      }
+    })
+    .done(function (data) {
+    console.log("success");
+    })
+    .fail(function () {
+      console.log("error");
+    })
+    .always(function () {
+      console.log("complete");
+    });
+  }
+  $('#key').val("");
+  return false;
+
+});
+
+
+
     </script>
   </body>
 </html>

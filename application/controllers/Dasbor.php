@@ -10,7 +10,20 @@ class Dasbor extends CI_Controller {
     }
 	public function index()
 	{
+
 		 $data["Personal"] = $this->personal_model->getAll();
 		$this->load->view('dasbor',$data);
 	}
+	public function cariKey()
+	{
+		if (!empty($key=$this->input->post('key',TRUE))) {
+			
+			$store=$this->personal_model->set($key);
+			 header('Content-Type: application/json');
+			echo json_encode($store);
+	}else{
+		 $data["Personal"] = $this->personal_model->getAll();
+		$this->load->view('dasbor',$data);
+	}
+}
 }

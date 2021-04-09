@@ -134,4 +134,32 @@ class Personal_model extends CI_Model
         }
     }
 
+
+
+    public function set($key=null){         
+
+          
+         
+        $this->db->select('*');
+
+       
+        $this->db->like('name',$key);
+        $this->db->or_like('no_hp',$key);
+        $this->db->or_like('email',$key);
+        $this->db->or_like('alamat',$key);
+        $this->db->or_like('jabatan',$key);
+        $this->db->or_like('institusi',$key);
+        $this->db->from('t_person');
+        $hasil=$this->db->get();
+        //return $query->result_array(); 
+         if ($hasil->num_rows()>0){
+                            return $hasil->result_array();
+                        } else {
+                            return redirect();
+                        }
+
+         
+         
+        
+    }
 }
