@@ -125,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
 
 $('#cari').click(function () {
-$('#messages1 tbody').empty();
+//$('#messages1 tbody').empty();
 
   var searchField = $('#key').val();
 
@@ -134,11 +134,11 @@ $('#messages1 tbody').empty();
     $("input").attr("placeholder", "nama").val("").focus().blur();
 
     $("#cari").attr("disabled", true);
-    $('#messages1').append("<tr><td style='text-align:center' colspan='8'> <b >-----------------------</b></td></tr>");
+    $('#container').append("<h1>no data</h1>");
     setTimeout(function () {
 
       $("#cari").attr("disabled", false);
-      $('#messages1 tbody').empty();
+      //$('#messages1 tbody').empty();
       /*$('#messages1 thead').empty();*/
       /* $("input").prop('disabled', false);*/
       $("input").focus();
@@ -173,6 +173,7 @@ $('#messages1 tbody').empty();
     })
     .fail(function () {
       console.log("error");
+      $('#container').append("<h1>no data</h1>");
     })
     .always(function () {
       console.log("complete");
