@@ -9,8 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
     <title>Hello, world!</title>
   </head>
   <body>
@@ -48,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="key" aria-label="Search">
+      <input class="form-control mr-sm-2" type="text" id="key" placeholder="Search" name="key" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" id="cari" type="submit">Search</button>
     </form>
   </div>
@@ -70,60 +71,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 &nbsp;
 &nbsp;
 &nbsp;
-<div class="container">
-<div class="row">
-<?php foreach ($Personal as $person): ?>
-    <div class="col-md-4">
-       
-  <div class="card-deck">
-    
-  <div class="card border-dark">
-    <div class="row">
-      <div class="col-md-4">
-         <a href=""> <img class="card-img-top" src="<?php echo base_url('upload/personal/'.$person->image) ?>" style=" border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 140px; height: 150px" alt="<?php echo $person->name ?>"></a>
-      </div>
-  <div class="col-md-8">
-      <div class="card-body">
-      <h6 class="card-title"><a href=""><i class="fa fa-user" aria-hidden="true"></i>
- <?php echo $person->name ?></a></h6>
+<div class="container" >
 
-      <p style="margin: 0.2px 0;"><small class="card-text"><i class="fa fa-envelope" aria-hidden="true"> <?php echo $person->email ?></i>
-  </small></p> 
-
-  <p style="margin: 0.2px 0;"><small class="card-text"><i class="fa fa-phone" aria-hidden="true"> <?php echo $person->no_hp ?></i>
- </small></p> 
-
-  <p style="margin: 0.2px 0;"><small class="card-text"><i class="fa fa-map-marker" aria-hidden="true"> <?php echo $person->alamat ?></i>
-  </small></p> 
-    </div>
-    </div>
+<div class="row" id="container">
+  
+</div>
  
   
-  
-  </div>
-     <div class="card-footer" style="text-align: center;">
-     <small><?php echo substr($person->tentang, 0, 80) ?>..</small>
-    </div>
-
- </div>
  
-</div>
- <br>
 
-</div>
-   <?php endforeach; ?>
- 
-</div>
+
 </div>
 
 
    
    
-   
-</div>
 
 
 
@@ -166,6 +128,7 @@ $('#cari').click(function () {
 $('#messages1 tbody').empty();
 
   var searchField = $('#key').val();
+
   if (searchField == " ") {
 
     $("input").attr("placeholder", "nama").val("").focus().blur();
@@ -186,23 +149,19 @@ $('#messages1 tbody').empty();
 
     $.ajax({
       type: "POST",
-      url: '/dasbor/cariKey',
+      url: './dasbor/cariKey/'+ searchField,
       data: { "key": searchField },
       dataType: "json",
       cache : false,
       success: function (data) {
-         $('#messages1').append(
-            "<tr><th scope='row'>nip</th><td>nama</td><td>matakuliah</td><td>sks</td><td>kelas</td><td>jam</td><td>hari</td>aksi<td></tr></td>"
-
-          );
+      
         /*  $('#asu').append("");*/
         $.each(data, function (key, value) {
           /*$("input").prop('disabled', true);*/
           //show complate seaerch
 
-          $('#messages1').append(
-            "<tr><th scope='row'>" + value.nip + "</th><td>" + value.nama_dosen + "</td><td>" + value.nama_mk + "</td><td>" + value.sks + "</td><td>" + value.nama_kelas + "</td><td>" + value.jam_ke + "</td><td>" + value.nama_hari + "</td><td><a type='button' class='btn btn-success btn-sm tooltip-test' title='More' onclick='addMatri(" + value.id_jadwal + ")'data-toggle='modal' data-target='#exampleModalLong'><i class='fas fa-edit'></i></a><a type='button' class='btn btn-danger btn-sm tooltip-test' title='clear all' onclick='hapus()'' > <span class='fa fa-window-close'></span></a></tr></td>"
-
+          $('#container').append(
+   "<div class='col-md-4'><div class='card-deck'><div class='card border-dark'><div class='row'><div class='col-md-4'><a href=''> <img class='card-img-top' src='./upload/personal/"+value.image+"' style=' border: 1px solid #ddd; border-radius: 4px; padding: 5px;width: 100%; height: 90%' alt='"+value.name+"'></a> </div><div class='col-md-8'> <div class='card-body'><h6 class='card-title'><a href='./dasbor/detail/"+value.name+"'><i class='fa fa-user' aria-hidden='true'> "+value.name+"</i></a></h6><p style='margin: 0.2px 0;'><small class='card-text'><i class='fa fa-envelope' aria-hidden='true'> "+value.email+"</i> </small></p> <p style='margin: 0.2px 0;'><small class='card-text'><i class='fa fa-phone' aria-hidden='true'> "+value.no_hp+"</i> </small></p> <p style='margin: 0.2px 0;'><small class='card-text'><i class='fa fa-map-marker' aria-hidden='true'> "+value.alamat+"</i></small></p>    </div>  </div>  </div>     <div class='card-footer' style='text-align: center;'>   <small>"+value.jabatan+" ^ "+value.institusi+"</small> </div> </div></div> <br></div>"
           );
 
         });
