@@ -75,18 +75,18 @@
        
   <div class="card-deck">
     
-  <div class="card border-primary">
+  <div class="card border-dark">
     <div class="row">
       <div class="col-md-4">
-          <img class="card-img-top" src="<?php echo base_url('upload/personal/'.$person->image) ?>" style=" border: 1px solid #ddd;
+         <a href=""> <img class="card-img-top" src="<?php echo base_url('upload/personal/'.$person->image) ?>" style=" border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  width: 140px; height: 150px" alt="Card image cap">
+  width: 140px; height: 150px" alt="<?php echo $person->name ?>"></a>
       </div>
   <div class="col-md-8">
       <div class="card-body">
-      <h6 class="card-title"><?php echo $person->name ?></h6>
-      <p class="card-text"><small><?php echo substr($person->tentang, 0, 120) ?></small></p>
+      <h6 class="card-title"><a href=""><?php echo $person->name ?></a></h6>
+      <p class="card-text"><small><?php echo substr($person->tentang, 0, 80) ?>..</small></p>
     </div>
     </div>
  
@@ -96,10 +96,12 @@
      <div class="card-footer" style="text-align: center;">
       <small class="text-muted" ><?php echo $person->no_hp ?> || <?php echo $person->email ?> || <?php echo $person->alamat ?></small>
     </div>
+
  </div>
  
 </div>
- 
+ <br>
+
 </div>
    <?php endforeach; ?>
  
@@ -111,12 +113,6 @@
    
    
 </div>
-
-
-
-
-
-
 
 
 
