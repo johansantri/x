@@ -16,7 +16,7 @@ class Dosen_m extends CI_Model
     public $no_hp;
     public $image = "default.jpg";
     public $fix;
-
+     public $deskripsi_mk;
     public function rules()
     {
         return [
@@ -60,6 +60,10 @@ class Dosen_m extends CI_Model
 
                ['field' => 'prestasi',
             'label' => 'prestasi akademik',
+            'rules' => 'required'],
+
+            ['field' => 'deskripsi_mk',
+            'label' => 'deskripsi mata kuliah',
             'rules' => 'required']
         ];
     }
@@ -88,6 +92,7 @@ class Dosen_m extends CI_Model
         $this->matakuliah = $this->security->xss_clean($post["matakuliah"]);
          $this->prestasi = $this->security->xss_clean($post["prestasi"]);
         $this->universitas = $this->security->xss_clean($post["universitas"]);
+        $this->deskripsi_mk = $post["deskripsi_mk"];
         $this->image = $this->_uploadImage();
         $this->fix ='baru';
         $this->db->insert($this->_table, $this);
@@ -107,6 +112,7 @@ class Dosen_m extends CI_Model
         $this->matakuliah = $this->security->xss_clean($post["matakuliah"]);
          $this->prestasi = $this->security->xss_clean($post["prestasi"]);
         $this->universitas = $this->security->xss_clean($post["universitas"]);
+         $this->deskripsi_mk = $post["deskripsi_mk"];
         $this->fix ='edit';
         
         if (!empty($_FILES["image"]["name"])) {

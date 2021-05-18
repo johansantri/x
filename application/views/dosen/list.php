@@ -34,6 +34,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <tr>
                     <th>Name</th>
                     <th>NIDN</th>
+                      <th>Universitas</th>
+                        <th>Matakuliah</th>
                     <th>Photo</th>
                     
                     <th>Action</th>
@@ -47,6 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </td>
                     <td>
                       <?php echo $dos->NIDN ?>
+                    </td>
+                     <td>
+                      <?php echo $dos->universitas ?>
+                    </td>
+                     <td>
+                      <?php echo $dos->matakuliah ?>
                     </td>
                     <td>
                       <img src="<?php echo base_url('upload/dosen/'.$dos->image) ?>" width="64" />

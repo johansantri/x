@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 18, 2021 at 08:32 PM
+-- Generation Time: May 18, 2021 at 08:52 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -42,7 +42,8 @@ CREATE TABLE `tb_dosen` (
   `image` varchar(200) NOT NULL,
   `dok` varchar(200) NOT NULL,
   `create_ad` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `fix` enum('baru','edit') NOT NULL
+  `fix` enum('baru','edit') NOT NULL,
+  `deskripsi_mk` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
